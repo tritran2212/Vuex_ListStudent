@@ -86,15 +86,15 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 export default {
   name: "StudentList",
   computed: {
-    studentList() {
-      return this.$store.getters.students;
-    },
-    loading() {
-      return this.$store.getters.loading;
-    },
+    ...mapGetters({
+      studentList:"students",
+      loading:"loading"
+    })
+    
   },
   created() {
     this.$store.dispatch("fetchStudents");

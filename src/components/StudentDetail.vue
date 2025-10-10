@@ -3,7 +3,7 @@
     <div class="w-full max-w-lg">
       <transition name="fade" mode="out-in">
         <div
-          v-if="stu"
+          v-if="student"
           key="detail"
           class="bg-slate-800/60 backdrop-blur-md rounded-3xl p-8 shadow-2xl ring-1 ring-slate-700/70 relative overflow-hidden"
         >
@@ -12,31 +12,31 @@
           ></div>
           <div class="relative flex flex-col items-center text-center z-10">
             <img
-              :src="stu.image || 'https://i.pravatar.cc/150?u=' + stu.email"
+              :src="student.image || 'https://i.pravatar.cc/150?u=' + student.email"
               alt="avatar"
               class="w-28 h-28 rounded-full border-4 border-slate-700 shadow-xl mb-4 hover:scale-105 transform transition-all duration-300"
             />
             <h2 class="text-3xl font-bold text-white bg-clip-text text-transparent animate-gradient-text">
-              {{ stu.firstName }} {{ stu.lastName }}
+              {{ student.firstName }} {{ student.lastName }}
             </h2>
-            <p class="text-slate-400 mt-1 text-sm">ID: {{ stu.id }}</p>
+            <p class="text-slate-400 mt-1 text-sm">ID: {{ student.id }}</p>
           </div>
           <div class="mt-6 space-y-3 z-10 relative">
             <p class="text-lg text-slate-200">
               <b class="font-semibold text-pink-300">👤 Họ tên:</b>
-              <span class="ml-2">{{ stu.firstName }} {{ stu.lastName }}</span>
+              <span class="ml-2">{{ student.firstName }} {{ student.lastName }}</span>
             </p>
             <p class="text-lg text-slate-200">
               <b class="font-semibold text-yellow-300">🎂 Tuổi:</b>
-              <span class="ml-2">{{ stu.age }}</span>
+              <span class="ml-2">{{ student.age }}</span>
             </p>
             <p class="text-lg text-slate-200">
               <b class="font-semibold text-indigo-300">📧 Email:</b>
-              <span class="ml-2">{{ stu.email }}</span>
+              <span class="ml-2">{{ student.email }}</span>
             </p>
             <p class="text-lg text-slate-200">
               <b class="font-semibold text-green-300">🏙️ Thành phố:</b>
-              <span class="ml-2">{{ stu.address.city }}</span>
+              <span class="ml-2">{{ student.address.city }}</span>
             </p>
           </div>
           <div class="mt-8 flex justify-center">
@@ -62,13 +62,20 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "StudentDetail",
   computed: {
-    stu() {
-      return this.$store.getters.selectedStudent;
-    },
+    ...mapGetters({
+      student: "selectedStudent", 
+    }),
   },
+  
+  created(){
+    if (!this.student) {
+    this.$router.push("/"); 
+    } 
+  }
 };
 </script>
 
