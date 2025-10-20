@@ -70,7 +70,6 @@ export default {
       student: "selectedStudent", 
     }),
   },
-  
   created(){
     if (!this.student) {
     this.$router.push("/"); 
@@ -78,7 +77,6 @@ export default {
   }
 };
 </script>
-
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {

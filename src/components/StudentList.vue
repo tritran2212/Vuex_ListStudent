@@ -77,7 +77,7 @@
               </div>
             </div>
           </li>
-          <li v-if="studentList.length === 0" class="p-6 text-center text-slate-400">
+          <li v-if="!studentList.length" class="p-6 text-center text-slate-400">
             Không có sinh viên nào — thử làm mới dữ liệu.
           </li>
         </ol>
@@ -94,7 +94,6 @@ export default {
       studentList:"students",
       loading:"loading"
     })
-    
   },
   created() {
     this.$store.dispatch("fetchStudents");
@@ -112,7 +111,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 @layer utilities {
   @keyframes gradient-1 {
@@ -128,7 +126,6 @@ export default {
       background-position: 0% 50%;
     }
   }
-
   @keyframes gradient-2 {
     0% {
       background-position: 0% 50%;
@@ -142,7 +139,6 @@ export default {
       background-position: 0% 50%;
     }
   }
-
   .animate-gradient-gradient {
     background-image: linear-gradient(90deg, #7c3aed, #ec4899, #f59e0b);
     background-size: 300% 300%;
@@ -151,7 +147,6 @@ export default {
     color: transparent;
     animation: gradient-1 6s ease infinite;
   }
-
   .animate-gradient-2 {
     background-image: linear-gradient(90deg, #a78bfa, #f0abfc, #fde68a);
     background-size: 240% 240%;
@@ -160,22 +155,18 @@ export default {
     color: transparent;
     animation: gradient-2 8s ease infinite;
   }
-
   .animate-spin-slow {
     animation: spin 2.5s linear infinite;
   }
-
   @keyframes spin {
     to {
       transform: rotate(360deg);
     }
   }
 }
-
 :root {
   --card-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
 }
-
 section {
   box-shadow: var(--card-shadow);
 }

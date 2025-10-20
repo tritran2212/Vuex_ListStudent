@@ -3,7 +3,6 @@ import Vuex from "vuex";
 import axios from "axios";
 import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex);
-
 export default new Vuex.Store({
   state: {
     students: [],
@@ -44,7 +43,6 @@ export default new Vuex.Store({
             commit("SET_SELECTED_STUDENT",null)
         }
     }
-    
   },
   getters: {
     students: (state) => state.students,
@@ -58,8 +56,4 @@ export default new Vuex.Store({
       storage: window.localStorage,
     }),
   ],
-
- 
-
-
 });
